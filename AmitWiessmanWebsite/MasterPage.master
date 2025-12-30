@@ -13,29 +13,40 @@
         }
     </style>
 </head>
-<body dir="rtl">
-
+<body style="background-color: beige" dir="rtl">
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
 
 
     <center>
-    <table style="width: 80%">
-        <tr>
-            <td width="30%">
-            <a href="Default.aspx">
-                <img src="תמונות/תמונה1.png" style="width: 200px; height: 100px;" /></a><br />
-            <a href="Default3.aspx">
-                <img src="תמונות/3333תמונה.png" style="width: 200px; height: 100px;" /></a><br />
-            <a href="Default4.aspx">
-                <img src="תמונות/תמונה2.png" style="width: 200px; height: 100px;"/></a><br />
-            </td>
-      <td>
-          <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-          </asp:ContentPlaceHolder>
-      </td>
-        </tr>
+        <table style="width: 100%" height="700px">
+            <tr>
+                <th style="height:100px"    >
+                    <a style="text-align: center" href="Default.aspx">
+                        <img src="תמונות/תמונה1.png" style="width: 200px; height: 100px;" /></a>
+                   
+                        <a href="Default3.aspx">
+                            <img src="תמונות/3333תמונה.png" style="width: 200px; height: 100px;" /></a>
+                    
+               
 
-    </table>
-        </center>
+                    <a href="Default4.aspx">
+                        <img src="תמונות/תמונה2.png" style="width: 200px; height: 100px;" /></a>
+                </th>
+            </tr>
+            <tr>
+                <td style="vertical-align:top">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+
+            </tr>
+
+        </table>
+    </center>
 
 </body>
 </html>
