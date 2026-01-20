@@ -30,6 +30,9 @@
             <option value="15">15</option>
             <option value="16">16</option>
             <option value="17">17</option>
+            <option value="אחר">אחר</option>
+               <option value="18+">18+</option>
+
         </select>
         <br />
         <input id="Submit1" type="submit" value="שלח" />
@@ -39,5 +42,7 @@
     <%=age %>
     <%=music %>
     <%=app %>
+        <%=email %>
+    <%=pass %>
 </asp:Content>
 
