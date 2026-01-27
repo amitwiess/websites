@@ -38,11 +38,7 @@
         <input id="Submit1" type="submit" value="שלח" />
     </form>
     <br />
-   <%=name %>
-    <%=age %>
-    <%=music %>
-    <%=app %>
-        <%=email %>
-    <%=pass %>
+   <%=st %>
+   
 </asp:Content>
 

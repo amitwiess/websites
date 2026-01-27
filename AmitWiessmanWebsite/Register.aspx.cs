@@ -8,38 +8,42 @@ using System.Web.UI.WebControls;
 public partial class Default3 : System.Web.UI.Page
 {
     public string st="";    
-    public string name;
-    public string app;
-    public string music;
-    public string age;
-    public string email;    
-    public string pass;
+    public string name1;
+    public string app1;
+    public string music1;
+    public string age1;
+    public string email1;    
+    public string pass1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if(IsPostBack)
         {
-             name = "name:" + Request.Form["name"];
-             app ="app:" +  Request.Form["radio"];
-             music = "music:" + Request.Form["textarea0"];
-             age = "age:" + Request.Form["age"];
-            email = "email:" + Request.Form["email"];
-            pass= "pass"+ Request.Form["pass"];
+             name1 = "name:" + Request.Form["name"];
+             app1 ="app:" +  Request.Form["radio"];
+             music1 = "music:" + Request.Form["textarea1"];
+             age1 = "age:" + Request.Form["age"];
+            email1 = "email:" + Request.Form["email"];
+            pass1= "pass:"+ Request.Form["pass"];
 
-            string name1= Request.Form["name"];
-            string email1 = Request.Form["email"];
-            string pass1 = Request.Form["pass"];
-            string app1 = Request.Form["radio"];
-            string music1= Request.Form["textarea0"];
-            string age1= Request.Form["age"];
-           
-            string sqlInsert=
-"INSERT INTO tUsers VALUES (" +
-"N'" + name1 + "', " +
-"N'" + email1 + "', " +
-"N'" + pass1 + "', " +
-"N'" + app1 + "', " +
-"N'" + music1 + "', " +
-"N'" + age1 + "')";
+            string name= Request.Form["name"];
+            string email = Request.Form["email"];
+            string pass = Request.Form["pass"];
+            string radio = Request.Form["radio"];
+            string textarea = Request.Form["textarea1"];
+            string age= Request.Form["age"];
+
+            int ageNum = int.Parse(Request.Form["age"]);
+
+            string sqlInsert =
+            "INSERT INTO tUsers ([firstName], [email], [password], [favApp], [favStyle], [age]) VALUES (" +
+            "N'" + name + "', " +
+            "N'" + email + "', " +
+            "N'" + pass + "', " +
+            "N'" + radio + "', " +
+            "N'" + textarea + "', " +
+            ageNum + ")";
+
+
 
 
             MyAdoHelper.DoQuery("MyDB.mdf", sqlInsert);
