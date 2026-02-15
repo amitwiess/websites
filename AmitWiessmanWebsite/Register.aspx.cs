@@ -31,9 +31,11 @@ public partial class Default3 : System.Web.UI.Page
             string radio = Request.Form["radio"];
             string textarea = Request.Form["textarea1"];
             string age= Request.Form["age"];
-
             int ageNum = int.Parse(Request.Form["age"]);
-
+            string sql=
+                "SELECT * FROM tUsers " +
+                "WHERE [email] = '" + email + "'";
+            bool userExists = MyAdoHelper.IsExist(sql);
             string sqlInsert =
             "INSERT INTO tUsers ([firstName], [email], [password], [favApp], [favStyle], [age]) VALUES (" +
             "N'" + name + "', " +
