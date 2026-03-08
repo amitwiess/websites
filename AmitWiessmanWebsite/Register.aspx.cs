@@ -16,23 +16,23 @@ public partial class Default3 : System.Web.UI.Page
     public string pass1;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(IsPostBack)
+        if (IsPostBack)
         {
-             name1 = "name:" + Request.Form["name"];
-             app1 ="app:" +  Request.Form["radio"];
-             music1 = "music:" + Request.Form["textarea1"];
-             age1 = "age:" + Request.Form["age"];
+            name1 = "name:" + Request.Form["name"];
+            app1 = "app:" + Request.Form["radio"];
+            music1 = "music:" + Request.Form["textarea1"];
+            age1 = "age:" + Request.Form["age"];
             email1 = "email:" + Request.Form["email"];
-            pass1= "pass:"+ Request.Form["pass"];
+            pass1 = "pass:" + Request.Form["pass"];
 
-            string name= Request.Form["name"];
+            string name = Request.Form["name"];
             string email = Request.Form["email"];
             string pass = Request.Form["pass"];
             string radio = Request.Form["radio"];
             string textarea = Request.Form["textarea1"];
-            string age= Request.Form["age"];
+            string age = Request.Form["age"];
             int ageNum = int.Parse(Request.Form["age"]);
-            string sql=
+            string sql =
                 "SELECT * FROM tUsers " +
                 "WHERE [email] = '" + email + "'";
             bool userExists = MyAdoHelper.IsExist(sql);
@@ -49,9 +49,12 @@ public partial class Default3 : System.Web.UI.Page
 
 
             MyAdoHelper.DoQuery("MyDB.mdf", sqlInsert);
-            st = "נרשמת בהצלחה!";
-
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            st = "המשתמש קיים";
+        }
             // Here you can add code to process the form data, such as sending an email or saving to a database.
         }
     }
-}
