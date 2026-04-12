@@ -35,7 +35,9 @@
 
                         <a href="sign%20in.aspx">
                         <img src="תמונות/תמונה2.png" style="width: 200px; height: 100px;" /></a>
-                       
+
+                        <a href="Manager.aspx"> 
+                          <img src="תמונות/WhatsApp%20Image%202026-04-12%20at%2014.30.47.jpeg" style="width: 200px; height: 100px;" /> </a>
                 </th>
             </tr>
             <tr>

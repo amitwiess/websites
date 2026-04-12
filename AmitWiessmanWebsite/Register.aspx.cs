@@ -49,7 +49,7 @@ public partial class Default3 : System.Web.UI.Page
 
 
             MyAdoHelper.DoQuery("MyDB.mdf", sqlInsert);
-            Response.Redirect("Login.aspx");
+            Response.Redirect("sign in.aspx");
         }
         else
         {
