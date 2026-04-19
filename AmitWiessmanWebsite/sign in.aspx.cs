@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,24 +13,43 @@ public partial class Default4 : System.Web.UI.Page
     {
         if (Page.IsPostBack)
         {
-string email = Request.Form["email"];
-           string pass = Request.Form["pass"];
-            string sqlSelect =
-                "SELECT * FROM tUsers " +
-                "WHERE [email] = N'" + email + "' " +
-                "AND [password] = N'" + pass + "'";
-            bool userExists = MyAdoHelper.IsExist(sqlSelect);
-            if (!userExists)
-            
-             stResult = "אימייל או סיסמא שגויים";
+            string email = Request.Form["email"];
+            string pass = Request.Form["pass"];
 
+            if (email=="manager" && pass=="123")
+            {
+                //מנהל
+                Session["username"] = "manager";
+                Session["nihul"] = "ok";
+                Response.Redirect("Manager.aspx");
+
+            }
             else
             {
-                stResult = "משתמש רשום";
+                string sqlSelect =
+                    "SELECT * FROM tUsers " +
+                    "WHERE [email] = N'" + email + "' " +
+                    "AND [password] = N'" + pass + "'";
+
+                DataTable dt = MyAdoHelper.ExecuteDataTable(sqlSelect);
+
+                if (dt.Rows.Count==0)
+                {
+                    //אורח
+                    Session["username"] = "guest";
+                    stResult = "אימייל או סיסמא שגויים";
+                }
+                else
+                {
+                    //משתמש רגיל
+                    Session["username"] = dt.Rows[0]["firstName"];
+                    Session["user"] = "ok";
+                    Response.Redirect("HomePage.aspx");
+                }
+
+
             }
 
-
         }
-
     }
 }

@@ -17,5 +17,6 @@
         <input id="Submit1" type="submit" value="שלח" />
     </form>
     <br />
+    <%=stResult %>
  
 </asp:Content>
