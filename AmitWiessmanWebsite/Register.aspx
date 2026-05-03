@@ -2,16 +2,60 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
      <script language="javascript">
-     function checkAll() {
-         return true;
-     }
-     </script>
+         function checkAll() {
+             let f = true;
+
+             nameError.innerHTML = "";
+             passError.innerHTML = "";
+             emailError.innerHTML = "";
+             if (checkFirstName() == false)
+                 f = false;
+             if (checkPassword() == false)
+                 f = false;
+             if (checkEmail() == false)
+                 f = false;
+
+             return f;
+         }
+
+         function checkFirstName() {
+             let name = document.getElementById("firstname").value;
+
+             if (name.length < 2 || name.length > 30) {
+                 nameError.innerHTML = "אורך השם לא תקין";
+                 return false;
+             }
+
+             return true;
+         }
+
+         function checkPassword() {
+             let pass = document.getElementById("pass").value;
+
+             if (pass.length < 6 || pass.length > 20) {
+                 passError.innerHTML = "אורך הסיסמה לא תקין";
+                 return false;
+             }
+
+             return true;
+         }
+         function checkEmail() {
+             let email = document.getElementById("email").value;
+
+             if (email.length < 6 || email.length > 20) {
+                 emailError.innerHTML = "אורך המייל לא תקין";
+                 return false;
+             }
+
+             return true;
+         }
+     </script>  
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
        <h1 style="text-align:center;">דף הרשמה</h1>
 
-       <form name="formPage" method="post" runat="server"  onesubmit="reaturn checkAll();">
+       <form name="formPage" method="post" runat="server"  onsubmit="return checkAll();">
         שם פרטי: <input type="text" name="name" id="firstname" placeholder="example">
            <span class="error" id="nameError"></span>
         <br />
