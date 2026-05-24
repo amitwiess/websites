@@ -1,108 +1,227 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Default3" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master"
+    AutoEventWireup="true"
+    CodeFile="Register.aspx.cs"
+    Inherits="Default3" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-     <script language="javascript">
-         function checkAll() {
-             let f = true;
+<asp:Content ID="Content1"
+    ContentPlaceHolderID="head"
+    Runat="Server">
 
-             nameError.innerHTML = "";
-             passError.innerHTML = "";
-             emailError.innerHTML = "";
-             if (checkFirstName() == false)
-                 f = false;
-             if (checkPassword() == false)
-                 f = false;
-             if (checkEmail() == false)
-                 f = false;
+    <script language="javascript">
 
-             return f;
-         }
+        function checkAll() {
 
-         function checkFirstName() {
-             let name = document.getElementById("firstname").value;
+            let f = true;
 
-             if (name.length < 2 || name.length > 30) {
-                 nameError.innerHTML = "אורך השם לא תקין";
-                 return false;
-             }
+            document.getElementById("nameError").innerHTML = "";
+            document.getElementById("passError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("textarea1Error").innerHTML = "";
 
-             return true;
-         }
+            if (checkFirstName() == false)
+                f = false;
 
-         function checkPassword() {
-             let pass = document.getElementById("pass").value;
+            if (checkPassword() == false)
+                f = false;
 
-             if (pass.length < 6 || pass.length > 20) {
-                 passError.innerHTML = "אורך הסיסמה לא תקין";
-                 return false;
-             }
+            if (checkEmail() == false)
+                f = false;
 
-             return true;
-         }
-         function checkEmail() {
-             let email = document.getElementById("email").value;
+            if (checkTextArea() == false)
+                f = false;
 
-             if (email.length < 6 || email.length > 20) {
-                 emailError.innerHTML = "אורך המייל לא תקין";
-                 return false;
-             }
+            return f;
+        }
 
-             return true;
-         }
-     </script>  
+        function checkFirstName() {
+
+            let name = document.getElementById("firstname").value;
+
+            if (name.length < 2 || name.length > 30) {
+
+                document.getElementById("nameError").innerHTML =
+                    "אורך השם חייב להיות בין 2 ל-30 תווים";
+
+                return false;
+            }
+
+            return true;
+        }
+
+        function checkPassword() {
+
+            let pass = document.getElementById("pass").value;
+
+            if (pass.length < 6 || pass.length > 20) {
+
+                document.getElementById("passError").innerHTML =
+                    "אורך הסיסמה חייב להיות בין 6 ל-20 תווים";
+
+                return false;
+            }
+
+            return true;
+        }
+
+        function checkEmail() {
+
+            let email = document.getElementById("email").value;
+
+            let msg = "";
+
+            if (email.length < 3 || email.length > 30) {
+
+                msg += "אורך המייל לא תקין<br />";
+            }
+
+            if (email.indexOf("@") == -1) {
+
+                msg += "המייל חייב להכיל @<br />";
+            }
+
+
+
+            if (msg != "") {
+
+                document.getElementById("emailError").innerHTML = msg;
+
+                return false;
+            }
+
+            return true;
+        }
+
+        function checkTextArea() {
+
+            let text = document.getElementById("textarea1").value;
+
+            if (text.length < 3 || text.length > 100) {
+
+                document.getElementById("textarea1Error").innerHTML =
+                    "יש להכניס בין 3 ל-100 תווים";
+
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-       <h1 style="text-align:center;">דף הרשמה</h1>
 
-       <form name="formPage" method="post" runat="server"  onsubmit="return checkAll();">
-        שם פרטי: <input type="text" name="name" id="firstname" placeholder="example">
-           <span class="error" id="nameError"></span>
+<asp:Content ID="Content2"
+    ContentPlaceHolderID="ContentPlaceHolder1"
+    Runat="Server">
+
+    <h1 style="text-align:center;">דף הרשמה</h1>
+
+    <form name="formPage"
+        method="post"
+        runat="server"
+        onsubmit="return checkAll();">
+
+        שם פרטי:
+        <input type="text"
+            name="name"
+            id="firstname"
+            placeholder="example"
+            required />
+
+        <span class="error" id="nameError"></span>
+
+        <br /><br />
+
+        מייל:
+        <input type="text"
+            name="email"
+            id="email"
+            placeholder="example@gmail.com"
+            required />
+
+        <span class="error" id="emailError"></span>
+
+        <br /><br />
+
+        סיסמה:
+        <input type="password"
+            name="pass"
+            id="pass"
+            placeholder="example"
+            required />
+
+        <span class="error" id="passError"></span>
+
+        <br /><br />
+
+        אפליקציית האזנה מועדפת:
+
         <br />
-           מייל: <input type="text" name="email" id="email" placeholder="example">
-           <span class="error" id="emailError"></span>
-<br />
-           סיסמה: <input type="text" name="pass" id="pass" placeholder="example">
-                      <span class="error" id="passError"></span>
 
-<br />
-        אפליקציית האזנה מעודפת: 
-        <br />
-        spotify<input type="radio" name="radio" checked value="spotify" id="check_1"><br />
-                             <span class="error" id="check_1Error"></span>
-
-        Apple music <input type="radio" name="radio" value="Apple music" id="check_2"><br />
-                             <span class="error" id="check_2Error"></span>
-
-        Sound cloud<input type="radio" name="radio" value="Sound cloud" checked id="check_3"><br />
-                  <span class="error" id="check_3Error"></span>
-
-         <br />
-        סגנון מוזיקה אהוב: 
-        <br />
-       
-        <textarea rows="5" cols="20" name="textarea1" id="textarea1" placeholder="הכנס מלל חופשי"></textarea>
-                      <span class="error" id="textarea1Error"></span>
+        spotify
+        <input type="radio"
+            name="radio"
+            checked
+            value="spotify"
+            id="check_1" />
 
         <br />
+
+        Apple music
+        <input type="radio"
+            name="radio"
+            value="Apple music"
+            id="check_2" />
+
+        <br />
+
+        Sound cloud
+        <input type="radio"
+            name="radio"
+            value="Sound cloud"
+            id="check_3" />
+
+        <br /><br />
+
+        סגנון מוזיקה אהוב:
+
+        <br />
+
+        <textarea rows="5"
+            cols="20"
+            name="textarea1"
+            id="textarea1"
+            placeholder="הכנס מלל חופשי"></textarea>
+
+        <span class="error" id="textarea1Error"></span>
+
+        <br /><br />
+
+        גיל:
+
+        <br />
+
         <select name="age" id="age">
+
             <option value="0">בחר גיל</option>
             <option value="15">15</option>
             <option value="16">16</option>
             <option value="17">17</option>
+            <option value="18+">18+</option>
             <option value="אחר">אחר</option>
-               <option value="18+">18+</option>
 
         </select>
-                                  <span class="error" id="ageError"></span>
 
-        <br />
-        <input id="Submit1" type="submit" value="שלח" />
-                      <span class="error" id="Submit1Error"></span>
+        <br /><br />
+
+        <input id="Submit1"
+            type="submit"
+            value="שלח" />
 
     </form>
-    <br />
-   <%=st %>
-   
-</asp:Content>
 
+    <br />
+
+    <%=st %>
+
+</asp:Content>

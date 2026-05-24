@@ -45,6 +45,7 @@
                         <a href="About.aspx">
                             <img src="תמונות/WhatsApp%20Image%202026-04-26%20at%2013.42.17%20(6).jpeg" style="width: 200px; height: 100px;"/>
                         </a>
+                        <a href="addItem.aspx">addItem.aspx</a>
 
                 </th>
             </tr>
