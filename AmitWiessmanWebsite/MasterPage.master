@@ -8,57 +8,128 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style>
-        table, th, td {
-            border: 1px solid black;
+        /* הגדרות עיצוב כלליות לגוף העמוד */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* גופן חדיש וקריא יותר */
+            margin: 0;
+            padding: 0;
         }
+
+        /* שדרוג המראה של הטבלה, כותרות ותאים */
+        table, th, td {
+            border: 1px solid #e0dbcd; /* שינוי השוליים השחורים לצבע אפור-בז' עדין ומודרני */
+        }
+        
+        table {
+            border-collapse: collapse; /* מאחד את הגבולות הכפולים של הטבלה לקו אחד נקי */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* הוספת צל רך מסביב לכל הטבלה למראה יוקרתי */
+            background-color: #ffffff; /* רקע לבן נקי לפנים הטבלה שנוגד את הרקע של הדף */
+        }
+
         th {
             text-align: center;
+            background-color: #ffffff; /* רקע לבן לאזור התפריט */
+            padding: 15px; /* מרווח פנימי שנותן לכפתורים "לנשום" */
+        }
+
+        /* עיצוב הקישורי תמונות בתפריט ואפקט מעבר עכבר (Hover) */
+        th a {
+            display: inline-block; /* מאפשר הפעלת אפקטים בצורה נכונה על הקישור */
+            margin: 5px; /* מרווח קל בין כפתור לכפתור */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* מייצר מעבר חלק ואנימציה בעת אינטראקציה */
+            border-radius: 8px; /* פינות מעוגלות קלות לקישור */
+        }
+
+        /* אפקט מדהים שקורה כשהמשתמש מזיז את העכבר מעל הכפתורים */
+        th a:hover {
+            transform: translateY(-4px); /* הכפתור קופץ מעט למעלה בעדינות */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* הצל מתחת לכפתור מתחזק ומעניק עומק */
+        }
+
+        /* עיצוב התמונות בתוך התפריט */
+        th a img {
+            border-radius: 8px; /* מעגל את הפינות החדות של התמונות */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* צל עדין מאוד קבוע מתחת לתמונות */
+            display: block; /* מונע רווחים לבנים מיותרים מתחת לתמונות */
+        }
+
+        /* עיצוב לתא התוכן המרכזי שבו נטען האתר */
+        td {
+            padding: 30px; /* מרווח פנימי גדול ונוח עבור הטקסט והתוכן של דפי הבן */
         }
     </style>
 </head>
+<%-- השארת הרקע הבז' המקורי שלך והגדרת כיוון הכתב לימין (עברית) --%>
 <body style="background-color: beige" dir="rtl">
 
-שלום <%=Session["username"] %>
+<%-- ברכת שלום עליונה שמציגה את שם המשתמש מה-Session --%>
+<div style="padding: 15px; font-size: 18px; font-weight: bold; color: #333;">
+    שלום <%=Session["username"] %>
+</div>
 
+    <%-- מרכּוז הטבלה באמצעות התגית המקורית שלך --%>
     <center>
+        <%-- הטבלה המקורית שלך ברוחב 100% וגובה 700 פיקסלים --%>
         <table style="width: 100%" height="700px">
             <tr>
+                <%-- שורת התפריט העליונה בגובה 100 פיקסלים --%>
                 <th style="height:100px"    >
+                    <%-- קישור לדף מידע --%>
                     <a style="text-align: center"  href="information.aspx">
-                        <img src="תמונות/תמונה1.png" style="width: 200px; height: 100px;" /></>
+                        <img src="תמונות/תמונה1.png" style="width: 200px; height: 100px;" /></a>
                    
-                        <a href="Register.aspx">
-                            <img src="תמונות/3333תמונה.png" style="width: 200px; height: 100px;" /></a>
+                    <%-- קישור לדף הרשמה --%>
+                    <a href="Register.aspx">
+                        <img src="תמונות/3333תמונה.png" style="width: 200px; height: 100px;" /></a>
                     
-               
-
-                        <a href="sign%20in.aspx">
+                    <%-- קישור לדף התחברות --%>
+                    <a href="sign%20in.aspx">
                         <img src="תמונות/תמונה2.png" style="width: 200px; height: 100px;" /></a>
 
-                        <% if (Session["nihul"] == "ok") { %>
-                        <a href="Manager.aspx"> 
-                          <img src="תמונות/WhatsApp%20Image%202026-04-12%20at%2014.30.47.jpeg" style="width: 200px; height: 100px;" /></a>
-                        <% } %>
-                        <a href="Logout.aspx">
-                            <img src="תמונות/WhatsApp%20Image%202026-04-26%20at%2013.42.17%20(5).jpeg"  style="width: 200px; height: 100px;" /></a>
+                    <%-- תנאי שרת: הצגת כפתור ניהול למנהלים בלבד --%>
+                    <% if (Session["nihul"] == "ok") { %>
+                    <a href="Manager.aspx"> 
+                      <img src="תמונות/WhatsApp%20Image%202026-04-12%20at%2014.30.47.jpeg" style="width: 200px; height: 100px;" /></a>
+                    <% } %>
 
-                        <a href="About.aspx">
-                            <img src="תמונות/WhatsApp%20Image%202026-04-26%20at%2013.42.17%20(6).jpeg" style="width: 200px; height: 100px;"/>
-                        </a>
-                        <a href="addItem.aspx">addItem.aspx</a>
-                        <a href="simpleSerch.aspx">simpleSerch.aspx</a>
+                    <%-- תנאי שרת: הצגת כפתור התנתקות רק אם המשתמש או המנהל מחוברים --%>
+                    <% if ((Session["user"] != null && Session["user"].ToString() == "ok") || (Session["nihul"] != null && Session["nihul"].ToString() == "ok")) { %>
+                    <a href="Logout.aspx">
+                        <img src="תמונות/WhatsApp%20Image%202026-04-26%20at%2013.42.17%20(5).jpeg"  style="width: 200px; height: 100px;" /></a>
+                      <% } %>
+                    
+                    <%-- קישור לדף אודות --%>
+                    <a href="About.aspx">
+                        <img src="תמונות/WhatsApp%20Image%202026-04-26%20at%2013.42.17%20(6).jpeg" style="width: 200px; height: 100px;"/>
+                    </a>
+
+                    <%-- תנאי שרת: הצגת כפתור הוספת פריט למשתמשים מחוברים/מנהלים בלבד --%>
+                    <% if ((Session["user"] != null && Session["user"].ToString() == "ok") || (Session["nihul"] != null && Session["nihul"].ToString() == "ok")) { %>
+                    <a href="addItem.aspx">
+                        <img src="תמונות/חיפוש%20פשוט.jpeg" style="width: 200px; height: 100px;" /> 
+                    </a>
+                       <% } %>
+
+                    <%-- תנאי שרת: הצגת כפתור חיפוש פשוט למשתמשים מחוברים/מנהלים בלבד --%>
+                    <% if ((Session["user"] != null && Session["user"].ToString() == "ok") || (Session["nihul"] != null && Session["nihul"].ToString() == "ok")) { %>
+                    <a href="simpleSerch.aspx">
+                        <img src="תמונות/עדכון%20פרטים.jpeg"  style="width: 200px; height: 100px;" />
+                    </a>
+                       <% } %>
                 </th>
             </tr>
             <tr>
+                <%-- אזור התוכן המרכזי של האתר המיושר לחלק העליון של התא --%>
                 <td style="vertical-align:top">
+                    <%-- פקד ה-PlaceHolder שמטעין לתוך ה-Master את דפי התוכן השונים --%>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </td>
 
             </tr>
-                                                                                  
+                                                                                                        
         </table>
     </center>
 
 </body>
-</html>
+</html>א6י;י;י;י;י;י;י;י;י;י;י;י;י;חמחמחמחמחמחמ45כחומ 
