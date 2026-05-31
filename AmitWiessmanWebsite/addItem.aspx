@@ -43,6 +43,16 @@
      <span class="error" id="passError"></span>
 
      <br /><br />
+שם הפלייליסט     :
+  <input type="text"
+      name="playName"
+      id="playname"
+      placeholder="example"
+      required />
+
+  <span class="error" id="passError"></span>
+
+  <br /><br />
 
 
      <input id="Submit1"
