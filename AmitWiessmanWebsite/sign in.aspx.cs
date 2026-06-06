@@ -21,7 +21,7 @@ public partial class Default4 : System.Web.UI.Page
             string pass = Request.Form["pass"];
 
             // בדיקה ידנית האם מדובר במנהל המערכת (לפי נתונים קבועים מראש)
-            if (email == "manager" && pass == "123")
+            if (email == "aw211009@gmail.com" && pass == "aw2009aw")
             {
                 // שמירת נתוני המנהל ב-Session והעברתו לדף הניהול
                 Session["username"] = "manager";

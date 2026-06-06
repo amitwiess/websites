@@ -6,6 +6,7 @@
 <asp:Content ID="Content1"
     ContentPlaceHolderID="head"
     Runat="Server">
+        <h1 style="text-align:center;">דף הרשמה</h1>
 
     <script language="javascript">
 
@@ -62,7 +63,7 @@
 
             return true;
         }
-
+     
         function checkEmail() {
 
             let email = document.getElementById("email").value;
@@ -114,7 +115,6 @@
     ContentPlaceHolderID="ContentPlaceHolder1"
     Runat="Server">
 
-    <h1 style="text-align:center;">דף הרשמה</h1>
 
     <form name="formPage"
         method="post"

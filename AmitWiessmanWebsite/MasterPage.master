@@ -79,12 +79,27 @@
                         <img src="תמונות/תמונה1.png" style="width: 200px; height: 100px;" /></a>
                    
                     <%-- קישור לדף הרשמה --%>
-                    <a href="Register.aspx">
-                        <img src="תמונות/3333תמונה.png" style="width: 200px; height: 100px;" /></a>
-                    
+                   <% if (!((Session["user"] != null && Session["user"].ToString() == "ok") ||
+         (Session["nihul"] != null && Session["nihul"].ToString() == "ok"))) { %>
+
+<a href="Register.aspx">
+    <img src="תמונות/3333תמונה.png" style="width: 200px; height: 100px;" />
+</a>
+
+<% } %>
+
+                    <a href="HomePage.aspx">
+                        <img src="תמונות/WhatsApp%20Image%202026-01-06%20at%2016.53.59%20(9).jpeg"style="width: 200px; height: 100px;" />
+                        </a>
                     <%-- קישור לדף התחברות --%>
-                    <a href="sign%20in.aspx">
-                        <img src="תמונות/תמונה2.png" style="width: 200px; height: 100px;" /></a>
+                  <% if (!((Session["user"] != null && Session["user"].ToString() == "ok") ||
+         (Session["nihul"] != null && Session["nihul"].ToString() == "ok"))) { %>
+
+<a href="sign in.aspx">
+    <img src="תמונות/תמונה2.png" style="width: 200px; height: 100px;" />
+</a>
+
+<% } %>
 
                     <%-- תנאי שרת: הצגת כפתור ניהול למנהלים בלבד --%>
                     <% if (Session["nihul"] == "ok") { %>

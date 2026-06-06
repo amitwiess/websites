@@ -38,6 +38,11 @@
 
 <div class="gallery">
     <img src="תמונות/טונה1.jpeg" />
+    <img src="תמונות/טונה22222.jpeg" />
+    <img src="תמונות/אילללל.jpeg" />
+    <img src="תמונות/עומרררררר.jpeg" />
+    <img src="תמונות/shae111111.jpeg" />
+    <img src="תמונות/shae123123.jpeg" />
 </div>
 
 </asp:Content>
