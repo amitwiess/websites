@@ -64,7 +64,21 @@
 
 <%-- ברכת שלום עליונה שמציגה את שם המשתמש מה-Session --%>
 <div style="padding: 15px; font-size: 18px; font-weight: bold; color: #333;">
-    שלום <%=Session["username"] %>
+  שלום 
+<%
+if (Session["nihul"] != null && Session["nihul"].ToString() == "ok")
+{
+    Response.Write("מנהל");
+}
+else if (Session["username"] != null)
+{
+    Response.Write(Session["username"]);
+}
+else
+{
+    Response.Write("אורח");
+}
+%>
 </div>
 
     <%-- מרכּוז הטבלה באמצעות התגית המקורית שלך --%>
